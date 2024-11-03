@@ -1,0 +1,50 @@
+:root {
+    --yourate-red: #ff0033;
+}
+
+body {
+    background-color: var(--sl-color-neutral-50);
+    font-family: var(--sl-font-sans);
+    color: var(--sl-color-neutral-900);
+}
+
+nav {
+    display: flex;
+    gap: 2vw;
+    justify-content: center;
+    align-items: center;
+}
+
+sl-avatar {
+    --size: 2rem;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: var(--sl-color-neutral-900);
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+    padding-right: 0.5em;
+    cursor: pointer;
+}
+
+.icon>img {
+    width: 3rem;
+}
+
+.nav-search {
+    width: 30vw;
+}
+
+.fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 5vw;
+    --sl-font-size-medium: 1.5rem;
+    --size: 3rem;
+}

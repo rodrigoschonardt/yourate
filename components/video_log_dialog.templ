@@ -1,0 +1,19 @@
+package components
+
+import "yourate/domain"
+
+templ VideoLogDialog(video *domain.Video) {
+     <sl-dialog id="log-video-dialog" label="Log Video" class="dialog-width" 
+                style="--width: 50vw;" x-data @sl-after-hide="event.target.remove()" open>
+        <form id="log-video-form">
+            <sl-input name="url" hx-get="/videos/dialog" hx-trigger="sl-change"
+                     autofocus help-text="Example: https://www.youtube.com/watch?v=dQw4w9WgXcQ" label="Video URL"
+                     hx-target="#log-video-dialog" hx-swap="outerHTML"></sl-input>
+             if video != nil {
+                <sl-input name="title" label="Video Title" value={ video.Title }></sl-input>
+             }
+        </form>
+        <sl-button slot="footer" variant="success">Save</sl-button>
+        <sl-button slot="footer" variant="danger" x-data @click="document.querySelector('#log-video-dialog').hide()">Cancel</sl-button>
+    </sl-dialog>
+}
