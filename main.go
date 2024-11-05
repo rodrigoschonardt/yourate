@@ -2,6 +2,7 @@ package main
 
 import (
 	"yourate/handlers"
+	"yourate/services"
 	"yourate/util"
 
 	"github.com/labstack/echo/v4"
@@ -12,13 +13,14 @@ func main() {
 
 	util.SetupLogger(e)
 
-	handler := handlers.New()
+	s := services.New()
 
-	e.Static("/css", "css")
+	handler := handlers.New(s)
+
 	e.Static("/assets", "assets")
 
-	e.GET("/", handler.HandleHome)
-	e.GET("/videos/dialog", handler.HandleDialogVideo)
+	e.GET("/", handler.HomeHandler.GetHome)
+	e.GET("/videos/dialog", handler.VideoHandler.GetVideoLogDialog)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }

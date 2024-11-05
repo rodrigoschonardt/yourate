@@ -29,7 +29,7 @@ func Layout() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\" class=\"sl-theme-dark\"><head><meta charset=\"UTF-8\"><link rel=\"icon\" type=\"image/png\" href=\"/assets/icon.png\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.18.0/cdn/themes/dark.css\"><link rel=\"stylesheet\" href=\"/css/styles.css\"><title>YouRate</title></head><body id=\"layout-body\"><nav><div class=\"icon\"><img src=\"/assets/icon.png\"><p>YouRate</p></div><a href=\"#\">Activity</a> <sl-input class=\"nav-search\"><sl-icon name=\"search\" slot=\"suffix\"></sl-icon></sl-input> <sl-avatar label=\"User avatar\"></sl-avatar></nav><main>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\" class=\"sl-theme-dark\"><head><meta charset=\"UTF-8\"><link rel=\"icon\" type=\"image/png\" href=\"/assets/img/icon.png\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.18.0/cdn/themes/dark.css\"><link rel=\"stylesheet\" href=\"/assets/css/styles.css\"><title>YouRate</title></head><body id=\"layout-body\"><nav><div class=\"icon\"><img src=\"/assets/img/icon.png\"><p>YouRate</p></div><a href=\"#\">Activity</a> <sl-input class=\"nav-search\"><sl-icon name=\"search\" slot=\"suffix\"></sl-icon></sl-input> <sl-avatar label=\"User avatar\"></sl-avatar></nav><main>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

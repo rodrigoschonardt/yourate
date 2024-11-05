@@ -6,6 +6,14 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func (h *Handler) HandleHome(c echo.Context) error {
+type (
+	HomeHandler interface {
+		GetHome(c echo.Context) error
+	}
+
+	homeHandler struct{}
+)
+
+func (h *homeHandler) GetHome(c echo.Context) error {
 	return views.Home().Render(c.Request().Context(), c.Response().Writer)
 }

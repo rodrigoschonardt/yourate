@@ -48,3 +48,7 @@ a {
     --sl-font-size-medium: 1.5rem;
     --size: 3rem;
 }
+
+form>sl-input:not(:last-child) {
+    margin-bottom: 1em;
+}

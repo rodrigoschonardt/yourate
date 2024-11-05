@@ -8,9 +8,9 @@ package components
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-import "yourate/domain"
+import "yourate/models"
 
-func VideoLogDialog(video *domain.Video) templ.Component {
+func VideoLogDialog(video *models.Video) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -31,25 +31,51 @@ func VideoLogDialog(video *domain.Video) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<sl-dialog id=\"log-video-dialog\" label=\"Log Video\" class=\"dialog-width\" style=\"--width: 50vw;\" x-data @sl-after-hide=\"event.target.remove()\" open><form id=\"log-video-form\"><sl-input name=\"url\" hx-get=\"/videos/dialog\" hx-trigger=\"sl-change\" autofocus help-text=\"Example: https://www.youtube.com/watch?v=dQw4w9WgXcQ\" label=\"Video URL\" hx-target=\"#log-video-dialog\" hx-swap=\"outerHTML\"></sl-input> ")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<sl-dialog id=\"log-video-dialog\" label=\"Log Video\" class=\"dialog-width\" style=\"--width: 50vw;\" x-data @sl-after-hide=\"event.target.remove()\" open><form id=\"log-video-form\"><sl-input name=\"url\" hx-get=\"/videos/dialog\" hx-trigger=\"sl-change\" autofocus help-text=\"Example: https://www.youtube.com/watch?v=dQw4w9WgXcQ\" label=\"Video URL\" hx-target=\"#log-video-dialog\" hx-swap=\"outerHTML\" value=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		if video != nil {
+		var templ_7745c5c3_Var2 string
+		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(video.Url)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/video_log_dialog.templ`, Line: 11, Col: 88}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"></sl-input> ")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if video.Id != "" {
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<sl-input name=\"title\" label=\"Video Title\" value=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var2 string
-			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(video.Title)
+			var templ_7745c5c3_Var3 string
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(video.Title)
 			if templ_7745c5c3_Err != nil {
 				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/video_log_dialog.templ`, Line: 13, Col: 78}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"></sl-input>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" disabled></sl-input> <sl-input name=\"channel-title\" label=\"Channel\" value=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var4 string
+			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(video.ChannelTitle)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/video_log_dialog.templ`, Line: 14, Col: 89}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" disabled></sl-input> <sl-divider></sl-divider> <sl-textarea label=\"Review\"></sl-textarea> <sl-rating label=\"Rating\" precision=\"0.5\"></sl-rating>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
