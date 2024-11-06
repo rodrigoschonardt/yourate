@@ -1,11 +1,13 @@
 package services
 
+import "github.com/labstack/echo/v4"
+
 type Services struct {
 	Video VideoService
 }
 
-func New() *Services {
+func New(l echo.Logger) *Services {
 	return &Services{
-		Video: &videoService{},
+		Video: &videoService{logger: l},
 	}
 }

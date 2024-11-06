@@ -22,8 +22,5 @@ func (h *videoHandler) GetVideoLogDialog(c echo.Context) error {
 
 	video, err := h.VideoService.GetVideoDetails(url)
 
-	if err != nil {
-	}
-
-	return components.VideoLogDialog(video).Render(c.Request().Context(), c.Response().Writer)
+	return components.VideoLogDialog(video, err).Render(c.Request().Context(), c.Response().Writer)
 }

@@ -13,7 +13,7 @@ func main() {
 
 	util.SetupLogger(e)
 
-	s := services.New()
+	s := services.New(e.Logger)
 
 	handler := handlers.New(s)
 

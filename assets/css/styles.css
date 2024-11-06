@@ -52,3 +52,7 @@ a {
 form>sl-input:not(:last-child) {
     margin-bottom: 1em;
 }
+
+.dialog-error {
+    color: var(--sl-color-red-600)
+}

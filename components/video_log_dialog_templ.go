@@ -10,7 +10,7 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import "yourate/models"
 
-func VideoLogDialog(video *models.Video) templ.Component {
+func VideoLogDialog(video *models.Video, err error) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -75,12 +75,31 @@ func VideoLogDialog(video *models.Video) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" disabled></sl-input> <sl-divider></sl-divider> <sl-textarea label=\"Review\"></sl-textarea> <sl-rating label=\"Rating\" precision=\"0.5\"></sl-rating>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" disabled></sl-input> <sl-divider></sl-divider> <sl-textarea label=\"Review\"></sl-textarea> <sl-rating label=\"Rating\" precision=\"0.5\"></sl-rating> ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</form><sl-button slot=\"footer\" variant=\"success\">Save</sl-button> <sl-button slot=\"footer\" variant=\"danger\" x-data @click=\"document.querySelector(&#39;#log-video-dialog&#39;).hide()\">Cancel</sl-button></sl-dialog>")
+		if err != nil && video.Url != "" {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"dialog-error\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var5 string
+			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(err.Error())
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/video_log_dialog.templ`, Line: 21, Col: 52}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</form><sl-button slot=\"footer\" variant=\"danger\" x-data @click=\"document.querySelector(&#39;#log-video-dialog&#39;).hide()\">Cancel</sl-button> <sl-button slot=\"footer\" variant=\"success\">Save</sl-button></sl-dialog>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
